@@ -10,5 +10,15 @@ pipeline {
                 
             }
         }
+        stage('MVN INSTALL') {
+            steps {
+                sh 'mvn install'
+            }
+        }
+        stage('MVN CLEAN') {
+            steps {
+                  sh 'mvn clean package -DskipTests=true'
+            }
+        }
     }
 }
