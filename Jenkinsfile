@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout GIT') {
             steps {
                 echo 'Pulling...'
-                git branch: 'main', url: 'https://github.com/raedgs/devops'
+                git branch: 'main', url: 'https://github.com/aymenromdhan/devops1'
             }
         }
         stage('MVN CLEAN') {
