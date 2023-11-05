@@ -9,20 +9,5 @@ pipeline {
                 url : 'https://github.com/aymenromdhan/devops1'
             }
         }
-        
-         stage('Build') {
-            steps {
-                // Étapes de construction du projet
-                sh 'mvn clean package'
-            }
-        }
-        stage('Nexus Deployment') {
-            steps {
-                // Étape pour déployer l'artefact dans Nexus en sautant les tests
-                sh 'mvn deploy -DskipTests=true'
-            }
-        }
-        
-        
     }
 }
