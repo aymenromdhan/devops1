@@ -10,5 +10,13 @@ pipeline {
                 
             }
         }
+        stage('Build') {
+            steps {
+                // Étape de nettoyage du projet
+                sh 'mvn clean'
+                // Étape de compilation du projet
+                sh 'mvn compile'
+            }
+        }
     }
 }
