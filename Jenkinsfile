@@ -5,18 +5,36 @@ pipeline {
         stage('Checkout GIT') {
             steps {
                 echo 'Pulling...'
-                    git branch: 'main',
-                    url : 'https://github.com/aymenromdhan/devops1'
-                
+                git branch: 'main', url: 'https://github.com/raedgs/devops'
             }
         }
-        stage('Build') {
+        stage('MVN CLEAN') {
             steps {
-                // Étape de nettoyage du projet
+                // Nettoie le projet en utilisant Maven
                 sh 'mvn clean'
-                // Étape de compilation du projet
+            }
+        }
+        stage('MVN COMPILE') {
+            steps {
+                // Compile le projet en utilisant Maven
                 sh 'mvn compile'
             }
         }
+        stage('Deploy to Nexus') {
+            steps {
+                sh 'mvn deploy -DskipTests'  // Déployer sur Nexus en sautant les tests
+            }
+          
+        }
+     
+         stage('SonarQube Scan') {
+            steps {
+                withSonarQubeEnv('sonarqube-10.2.1'){
+                sh 'mvn sonar:sonar'
+            }
+        }
+         }
+       
+     
     }
 }
