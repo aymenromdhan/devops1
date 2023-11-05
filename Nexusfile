@@ -4,9 +4,9 @@ pipeline {
     stages {
         stage('checkout GIT') {
             steps {
-             echo 'Pulling...'
-                git branch: 'main',
-                url : 'https://github.com/aymenromdhan/devops1'
+                echo 'Pulling...'
+                    git branch: 'main',
+                    url : 'https://github.com/aymenromdhan/devops1'
             }
         }
     }
