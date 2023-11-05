@@ -27,13 +27,15 @@ pipeline {
           
         }
      
-        stage('SonarQube Scan') {
+stage("Quality code Test") {
             steps {
-                withSonarQubeEnv('sonarqube-10.2.1'){
-                sh 'mvn sonar:sonar'
+           
+             sh 'mvn sonar:sonar -Dsonar.projectKey=sonartest -Dsonar.host.url=http://192.168.1.51:9000 -Dsonar.login=squ_38ad215ce1f019d734c3fa84a33bcc25c2715e50'         
+                 
+               
+
             }
         }
-         }
 
      
     }
